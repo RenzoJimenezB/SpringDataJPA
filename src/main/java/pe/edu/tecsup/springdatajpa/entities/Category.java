@@ -2,6 +2,7 @@ package pe.edu.tecsup.springdatajpa.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +21,7 @@ public class Category {
     @Column(name = "orden")
     private Integer order;
 
-    @OneToMany(mappedBy = "category")
+    @ToString.Exclude
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Product> products = new ArrayList<>();
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", order=" + order +
-                ", products=" + products +
-                '}';
-    }
 }

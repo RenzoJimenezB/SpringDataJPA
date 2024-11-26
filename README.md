@@ -1,0 +1,1 @@
+# SpringDataJPA demo app

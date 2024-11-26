@@ -22,6 +22,6 @@ public class Category {
     private Integer order;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList<>();
 }

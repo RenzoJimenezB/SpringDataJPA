@@ -50,7 +50,6 @@ public class ProductServiceImpl implements ProductService {
             return product.get();
         else
             throw new Exception("Product not found");
-//        return productRepository.findById(id);
     }
 
     @Override

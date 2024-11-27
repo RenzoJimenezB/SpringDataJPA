@@ -23,7 +23,7 @@ class ProductServiceTest {
         log.info("Testing ProductService.save()");
 
         List<Product> products = productService.findAll();
-        int totalBefore = products.size();
+        int totalBeforeInsert = products.size();
 
         Product product = new Product();
 
@@ -43,8 +43,8 @@ class ProductServiceTest {
         System.out.printf("Product registered in DB:\n%s\n", product);
 
         products = productService.findAll();
-        int totalAfter = products.size();
-        assertEquals(1, totalAfter - totalBefore);
+        int totalAfterInsert = products.size();
+        assertEquals(totalBeforeInsert + 1, totalAfterInsert);
     }
 
     @Test
@@ -84,7 +84,7 @@ class ProductServiceTest {
         assertNotNull(product);
         assertEquals(EXPECTED_NAME, product.getName());
 
-        log.info(product.toString());
+        System.out.println(product);
     }
 
     @Test
@@ -119,7 +119,7 @@ class ProductServiceTest {
         log.info("Testing ProductService.deleteById()");
 
         List<Product> products = productService.findAll();
-        int totalBefore = products.size();
+        int totalBeforeDelete = products.size();
 
         if (products.isEmpty())
             return;
@@ -130,7 +130,7 @@ class ProductServiceTest {
         System.out.printf("Product deleted from DB:\n%s\n", lastProduct);
 
         products = productService.findAll();
-        int totalAfter = products.size();
-        assertEquals(1, totalBefore - totalAfter);
+        int totalAfterDelete = products.size();
+        assertEquals(totalBeforeDelete - 1, totalAfterDelete);
     }
 }

@@ -122,25 +122,23 @@ class UserServiceTest {
         Long id = 5L;
         String ORIGINAL_NAME = "Erick";
         String UPDATED_NAME = "Erick 2";
-        User user;
 
-        user = userService.findById(id);
-        
+        User user = userService.findById(id);
+        System.out.printf("Original user object: \n%s\n", user);
+
         user.setName(UPDATED_NAME);
-
         userService.update(user);
-        System.out.printf("Updated name: %s\n", user.getName());
 
-        user = userService.findById(id);
-        assertEquals(UPDATED_NAME, user.getName());
+        User updatedUser = userService.findById(id);
+        System.out.printf("Updated user's name: %s\n", updatedUser.getName());
+        assertEquals(UPDATED_NAME, updatedUser.getName());
 
-        user.setName(ORIGINAL_NAME);
+        updatedUser.setName(ORIGINAL_NAME);
+        userService.update(updatedUser);
 
-        userService.update(user);
-        System.out.printf("Original name: %s\n", user.getName());
-
-        user = userService.findById(id);
-        assertEquals(ORIGINAL_NAME, user.getName());
+        User restoredUser = userService.findById(id);
+        System.out.printf("Restored user's name: %s\n", restoredUser.getName());
+        assertEquals(ORIGINAL_NAME, restoredUser.getName());
     }
 
     @Test
@@ -156,7 +154,7 @@ class UserServiceTest {
         User lastUser = users.get(users.size() - 1);
         userService.deleteById(lastUser.getId());
 
-        System.out.printf("User deleted from DB:\n%s\n", lastUser);
+        System.out.printf("User deleted from the DB:\n%s\n", lastUser);
 
         users = userService.findAll();
         int totalAfterDelete = users.size();

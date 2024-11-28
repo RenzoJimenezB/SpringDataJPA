@@ -13,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "roles_id")
@@ -26,10 +26,10 @@ public class User {
     private String name;
 
     @Column(name = "apellidos")
-    private String lastname;
+    private String lastName;
 
     @Column(name = "sexo")
-    private String gender;
+    private String sex;
 
     @Column(name = "fecnacimiento")
     private Date birthdate;
@@ -41,5 +41,5 @@ public class User {
     private String address;
 
     @Column(name = "estado")
-    private String state;
+    private Integer state;
 }

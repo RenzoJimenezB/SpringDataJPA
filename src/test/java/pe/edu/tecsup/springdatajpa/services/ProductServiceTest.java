@@ -40,7 +40,7 @@ class ProductServiceTest {
         productService.save(product);
 
         product = productService.findById(product.getId());
-        System.out.printf("Product registered in DB:\n%s\n", product);
+        System.out.printf("Product saved in the DB:\n%s\n", product);
 
         products = productService.findAll();
         int totalAfterInsert = products.size();
@@ -56,7 +56,6 @@ class ProductServiceTest {
         assertFalse(products.isEmpty());
         assertFalse(products.contains(null));
 
-        products.forEach(product -> System.out.println(product.getName()));
         products.forEach(System.out::println);
     }
 
@@ -69,7 +68,6 @@ class ProductServiceTest {
         assertFalse(products.isEmpty());
         assertFalse(products.contains(null));
 
-        products.forEach(product -> System.out.println(product.getName()));
         products.forEach(System.out::println);
     }
 
@@ -127,7 +125,7 @@ class ProductServiceTest {
         Product lastProduct = products.get(products.size() - 1);
         productService.deleteById(lastProduct.getId());
 
-        System.out.printf("Product deleted from DB:\n%s\n", lastProduct);
+        System.out.printf("Product deleted from the DB:\n%s\n", lastProduct);
 
         products = productService.findAll();
         int totalAfterDelete = products.size();

@@ -33,10 +33,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findByName(String name) {
+    public List<User> findByLastName(String lastName) {
         log.info("UserServiceImpl.findByName()");
 
-        return userRepository.findByName(name);
+        return userRepository.findByLastName(lastName);
+    }
+
+    @Override
+    public List<User> findByState(Integer state) {
+        log.info("UserServiceImpl.findByState()");
+
+        return userRepository.findByState(state);
     }
 
     @Override

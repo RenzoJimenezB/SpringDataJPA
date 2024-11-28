@@ -9,7 +9,9 @@ public interface UserService {
 
     List<User> findAll();
 
-    List<User> findByName(String name);
+    List<User> findByLastName(String lastName);
+
+    List<User> findByState(Integer state);
 
     User findById(Long id) throws Exception;
 
